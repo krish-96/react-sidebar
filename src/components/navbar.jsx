@@ -1,0 +1,85 @@
+import React, { useState, useId } from "react";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee, faBars, faTwitter } from "@fortawesome/free-solid-svg-icons";
+import { SidebarData } from "./sidebar";
+import { MdArrowBack } from "react-icons/md";
+
+function NavBar() {
+  const newUniqueId = useId();
+  const location = useLocation();
+  const [activeNavLink, setActiveNavLink] = useState("/");
+  console.log("setActiveNavLink ", activeNavLink);
+  console.log("location ", location, location.pathname);
+
+  return (
+    <div className="px-3 py-3 sticky-top">
+      <button
+        className="btn btn-dark"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasWithBothOptions"
+        aria-controls="offcanvasWithBothOptions"
+      >
+        <FontAwesomeIcon icon={faBars} />
+      </button>{" "}
+      <span className="text-light">HGL Shop</span>
+      <div
+        className="offcanvas offcanvas-start"
+        data-bs-scroll="true"
+        tabIndex="-1"
+        id="offcanvasWithBothOptions"
+        aria-labelledby="offcanvasWithBothOptionsLabel"
+      >
+        <div className="offcanvas-header">
+          <h5 className="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+            HGL Shop
+          </h5>
+          <button
+            type="button"
+            className="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div className="offcanvas-body">
+          <ul className="nav flex-column">
+            {SidebarData.map((sideBarOption, index) => (
+              <li
+                className={
+                  location.pathname === sideBarOption.path
+                    ? "nav-item bg-dark text-light"
+                    : "nav-item "
+                }
+                key={`${newUniqueId}-${index}`}
+              >
+                <Link
+                  className={
+                    location.pathname === sideBarOption.path
+                      ? "nav-link text-light"
+                      : "nav-link"
+                  }
+                  aria-current="page"
+                  data-bs-dismiss="offcanvas"
+                  to={sideBarOption.path}
+                  onClick={(e) => {
+                    console.log(
+                      "event ",
+                      e.currentTarget,
+                      e.currentTarget.innerText
+                    );
+                    setActiveNavLink(`${sideBarOption.path}`);
+                  }}
+                >
+                  {sideBarOption.icon} {sideBarOption.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default NavBar;

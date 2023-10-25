@@ -1,17 +1,77 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DashBoard from "./components/dashboard";
+import Account from "./components/account";
+import Product from "./components/product";
+import Products from "./components/products";
+import NotFound from "./components/notfound";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route path="/account" element={<Account />} />
+          <Route path="/dashboard" element={<DashBoard />} />
+          {/* <Route path="/product" element={<Products />}>
+            <Route index element={<Products />} /> */}
+          <Route path="/product/:productNumber" element={<Product />} />
+          {/* </Route> */}
+          <Route path="/products" element={<Products />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+      {/* <App /> */}
+    </BrowserRouter>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// import * as React from "react";
+// import { createRoot } from "react-dom/client";
+// import {
+//   createBrowserRouter,
+//   RouterProvider,
+//   Route,
+//   Link,
+// } from "react-router-dom";
+
+// import Product from "./components/product";
+// import Products from "./components/products";
+// import Account from "./components/account";
+// import DashBoard from "./components/dashboard";
+// import App from "./App";
+// import "bootstrap/dist/css/bootstrap.min.css";
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <App />,
+//   },
+//   {
+//     path: "account",
+//     element: <Account />,
+//   },
+//   {
+//     path: "dashboard",
+//     element: <DashBoard />,
+//   },
+//   {
+//     path: "products",
+//     element: <Products />,
+//   },
+//   {
+//     path: "product",
+//     element: <Product />,
+//   },
+// ]);
+
+// createRoot(document.getElementById("root")).render(
+//   <RouterProvider router={router} />
+// );
