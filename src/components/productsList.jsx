@@ -1,130 +1,261 @@
-import React, { useId } from "react";
+import React, { useId, useMemo } from "react";
 import { Link } from "react-router-dom";
-
+import { MdInfoOutline } from "react-icons/md";
 const existingProducts = [
   {
-    productNumber: 1,
-    productName: "Product 1",
-    productPrice: 1000,
+    productNumber: "1",
+    productName: "Kitchen Blender",
+    productPrice: 49.99,
     productImage: "https://picsum.photos/200/300",
+    productCategory: "Home Appliances",
     productDescription:
-      "A product description is a form of marketing copy used to describe and explain the benefits of your product. In other words, it provides all the information and details of your product on your ecommerce site. These product details can be one sentence, a short paragraph or bulleted. They can be serious, funny or quirky.",
+      "Effortlessly prepare smoothies and shakes with this powerful kitchen blender. It's easy to use and clean, making it a must-have in your kitchen.",
   },
   {
-    productNumber: 2,
-    productName: "Product 2",
-    productPrice: 2000,
+    productNumber: "2",
+    productName: "Smartphone",
+    productPrice: 299.99,
     productImage: "https://picsum.photos/200/300",
+    productCategory: "Electrics / Electronics",
     productDescription:
-      "A product description is a form of marketing copy used to describe and explain the benefits of your product. In other words, it provides all the information and details of your product on your ecommerce site. These product details can be one sentence, a short paragraph or bulleted. They can be serious, funny or quirky.",
+      "Stay connected with the latest smartphone technology. Featuring a stunning display, high-performance processor, and advanced camera capabilities.",
   },
   {
-    productNumber: 3,
-    productName: "Product 3",
-    productPrice: 3000,
+    productNumber: "3",
+    productName: "Leather Sofa",
+    productPrice: 799.99,
     productImage: "https://picsum.photos/200/300",
+    productCategory: "Furniture",
     productDescription:
-      "A product description is a form of marketing copy used to describe and explain the benefits of your product. In other words, it provides all the information and details of your product on your ecommerce site. These product details can be one sentence, a short paragraph or bulleted. They can be serious, funny or quirky.",
+      "Add elegance to your living room with this luxurious leather sofa. Its ergonomic design and premium materials ensure both comfort and style.",
   },
   {
-    productNumber: 4,
-    productName: "Product 4",
-    productPrice: 4000,
+    productNumber: "4",
+    productName: "Denim Jeans",
+    productPrice: 39.99,
     productImage: "https://picsum.photos/200/300",
+    productCategory: "Clothing",
     productDescription:
-      "A product description is a form of marketing copy used to describe and explain the benefits of your product. In other words, it provides all the information and details of your product on your ecommerce site. These product details can be one sentence, a short paragraph or bulleted. They can be serious, funny or quirky.",
+      "Upgrade your wardrobe with these classic denim jeans. They offer a perfect fit, durability, and timeless fashion appeal.",
   },
   {
-    productNumber: 5,
-    productName: "Product 5",
-    productPrice: 5000,
+    productNumber: "5",
+    productName: "Garden Tools Set",
+    productPrice: 69.99,
     productImage: "https://picsum.photos/200/300",
+    productCategory: "Others",
     productDescription:
-      "A product description is a form of marketing copy used to describe and explain the benefits of your product. In other words, it provides all the information and details of your product on your ecommerce site. These product details can be one sentence, a short paragraph or bulleted. They can be serious, funny or quirky.",
+      "Nurture your garden with this comprehensive garden tools set. It includes everything you need for gardening, from planting to pruning.",
   },
   {
-    productNumber: 6,
-    productName: "Product 6",
-    productPrice: 6000,
+    productNumber: "6",
+    productName: "Coffee Maker",
+    productPrice: 79.99,
     productImage: "https://picsum.photos/200/300",
+    productCategory: "Home Appliances",
     productDescription:
-      "A product description is a form of marketing copy used to describe and explain the benefits of your product. In other words, it provides all the information and details of your product on your ecommerce site. These product details can be one sentence, a short paragraph or bulleted. They can be serious, funny or quirky.",
+      "Brew your favorite coffee at home with this efficient coffee maker. It offers multiple brewing options and easy maintenance.",
   },
   {
-    productNumber: 7,
-    productName: "Product 7",
-    productPrice: 7000,
+    productNumber: "7",
+    productName: "Wireless Earbuds",
+    productPrice: 59.99,
     productImage: "https://picsum.photos/200/300",
+    productCategory: "Electrics / Electronics",
     productDescription:
-      "A product description is a form of marketing copy used to describe and explain the benefits of your product. In other words, it provides all the information and details of your product on your ecommerce site. These product details can be one sentence, a short paragraph or bulleted. They can be serious, funny or quirky.",
+      "Enjoy immersive audio with these wireless earbuds. They feature noise cancellation and a comfortable, secure fit.",
   },
   {
-    productNumber: 8,
-    productName: "Product 8",
-    productPrice: 8000,
+    productNumber: "8",
+    productName: "Modern Dining Table",
+    productPrice: 349.99,
     productImage: "https://picsum.photos/200/300",
+    productCategory: "Furniture",
     productDescription:
-      "A product description is a form of marketing copy used to describe and explain the benefits of your product. In other words, it provides all the information and details of your product on your ecommerce site. These product details can be one sentence, a short paragraph or bulleted. They can be serious, funny or quirky.",
+      "Upgrade your dining area with this sleek and modern dining table. It's perfect for family gatherings and dinner parties.",
   },
   {
-    productNumber: 9,
-    productName: "Product 9",
-    productPrice: 9000,
+    productNumber: "9",
+    productName: "Summer Dress",
+    productPrice: 29.99,
     productImage: "https://picsum.photos/200/300",
+    productCategory: "Clothing",
     productDescription:
-      "A product description is a form of marketing copy used to describe and explain the benefits of your product. In other words, it provides all the information and details of your product on your ecommerce site. These product details can be one sentence, a short paragraph or bulleted. They can be serious, funny or quirky.",
+      "Step into summer with this fashionable summer dress. It's lightweight, comfortable, and available in vibrant colors.",
   },
   {
-    productNumber: 10,
-    productName: "Product 10",
-    productPrice: 10000,
+    productNumber: "10",
+    productName: "Outdoor Grill",
+    productPrice: 199.99,
     productImage: "https://picsum.photos/200/300",
+    productCategory: "Others",
     productDescription:
-      "A product description is a form of marketing copy used to describe and explain the benefits of your product. In other words, it provides all the information and details of your product on your ecommerce site. These product details can be one sentence, a short paragraph or bulleted. They can be serious, funny or quirky.",
+      "Host a perfect barbecue with this outdoor grill. It's equipped with various cooking features for your grilling needs.",
   },
   {
-    productNumber: 11,
-    productName: "Product 11",
-    productPrice: 11000,
+    productNumber: "11",
+    productName: "Vacuum Cleaner",
+    productPrice: 89.99,
     productImage: "https://picsum.photos/200/300",
+    productCategory: "Home Appliances",
     productDescription:
-      "A product description is a form of marketing copy used to describe and explain the benefits of your product. In other words, it provides all the information and details of your product on your ecommerce site. These product details can be one sentence, a short paragraph or bulleted. They can be serious, funny or quirky.",
+      "Effortlessly clean your home with this powerful vacuum cleaner. It offers advanced filtration and easy maneuverability.",
   },
   {
-    productNumber: 12,
-    productName: "Product 12",
-    productPrice: 12000,
+    productNumber: "12",
+    productName: "Smart Watch",
+    productPrice: 129.99,
     productImage: "https://picsum.photos/200/300",
+    productCategory: "Electrics / Electronics",
     productDescription:
-      "A product description is a form of marketing copy used to describe and explain the benefits of your product. In other words, it provides all the information and details of your product on your ecommerce site. These product details can be one sentence, a short paragraph or bulleted. They can be serious, funny or quirky.",
+      "Stay connected and monitor your health with this feature-rich smartwatch. It tracks your fitness and provides notifications.",
+  },
+  {
+    productNumber: "13",
+    productName: "Cozy Sofa Set",
+    productPrice: 999.99,
+    productImage: "https://picsum.photos/200/300",
+    productCategory: "Furniture",
+    productDescription:
+      "Create a comfortable living space with this cozy sofa set. It includes a sofa, loveseat, and armchair for ultimate relaxation.",
+  },
+  {
+    productNumber: "14",
+    productName: "Athletic Shoes",
+    productPrice: 49.99,
+    productImage: "https://picsum.photos/200/300",
+    productCategory: "Clothing",
+    productDescription:
+      "Stay active with these athletic shoes. They provide excellent support, cushioning, and durability for your workouts.",
+  },
+  {
+    productNumber: "15",
+    productName: "Camping Gear Bundle",
+    productPrice: 159.99,
+    productImage: "https://picsum.photos/200/300",
+    productCategory: "Others",
+    productDescription:
+      "Get ready for your outdoor adventures with this comprehensive camping gear bundle. It includes a tent, sleeping bag, and more.",
+  },
+  {
+    productNumber: "16",
+    productName: "Refrigerator",
+    productPrice: 599.99,
+    productImage: "https://picsum.photos/200/300",
+    productCategory: "Home Appliances",
+    productDescription:
+      "Store your food with ease in this spacious refrigerator. It features adjustable shelving and energy-saving technology.",
+  },
+  {
+    productNumber: "17",
+    productName: "Noise-Canceling Headphones",
+    productPrice: 149.99,
+    productImage: "https://picsum.photos/200/300",
+    productCategory: "Electrics / Electronics",
+    productDescription:
+      "Experience premium audio quality with these noise-canceling headphones. They offer long battery life and comfort for extended use.",
+  },
+  {
+    productNumber: "18",
+    productName: "Vintage Bookshelf",
+    productPrice: 279.99,
+    productImage: "https://picsum.photos/200/300",
+    productCategory: "Furniture",
+    productDescription:
+      "Add a touch of nostalgia with this vintage bookshelf. It's perfect for displaying your book collection and collectibles.",
+  },
+  {
+    productNumber: "19",
+    productName: "Winter Jacket",
+    productPrice: 79.99,
+    productImage: "https://picsum.photos/200/300",
+    productCategory: "Clothing",
+    productDescription:
+      "Stay warm in style with this winter jacket. It's insulated, water-resistant, and designed to keep you cozy in cold weather.",
+  },
+  {
+    productNumber: "20",
+    productName: "Toolbox Set",
+    productPrice: 49.99,
+    productImage: "https://picsum.photos/200/300",
+    productCategory: "Others",
+    productDescription:
+      "Complete your DIY projects with this toolbox set. It includes a variety of essential tools for your home improvement tasks.",
   },
 ];
 
-export default function ProductsList() {
+export default function ProductsList({ selectedCategory }) {
   const newUniqueId = useId();
+
+  // function filterProducts() {
+  //   if (selectedCategory === "" || selectedCategory === "All categories") {
+  //     return existingProducts;
+  //   } else {
+  //     return existingProducts.filter(
+  //       (product) => product.productCategory === selectedCategory
+  //     );
+  //   }
+  // }
+  // const filteredProducts = filterProducts();
+  const filteredProducts = useMemo(() => {
+    if (selectedCategory === "" || selectedCategory === "All categories") {
+      return existingProducts;
+    } else {
+      return existingProducts.filter(
+        (product) => product.productCategory === selectedCategory
+      );
+    }
+  }, [selectedCategory]);
+
+  console.log("filteredProducts => :", filteredProducts);
   return (
     <>
-      <div className="row">
-        {existingProducts.map((product, index) => {
-          return (
-            <div className="col" key={`${newUniqueId}-${index}`}>
-              <div className="card" style={{ width: "18rem" }}>
-                <img src={product.productImage} alt="" />
-                <div className="card-body">
-                  <div className="card-title">{product.productName}</div>
-                  <p className="card-text">{product.productDescription}</p>
-                  <Link
-                    to={`/product/${product.productNumber}`}
-                    className="btn btn-primary btn-sm"
-                  >
-                    See full details
-                  </Link>
+      {filteredProducts && filteredProducts.length >= 1 ? (
+        <div className="row">
+          {filteredProducts.map((product, index) => {
+            return (
+              <div
+                className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4"
+                key={`${newUniqueId}-${index}`}
+              >
+                <div className="card" style={{ width: "18rem" }}>
+                  <img src={product.productImage} alt="" />
+                  <div className="card-body">
+                    <div className="card-title">
+                      <span className="text-normal">
+                        {" "}
+                        {product.productName}{" "}
+                      </span>{" "}
+                      <br />
+                      <span className="text-normal"> in </span>
+                      <span>{product.productCategory}</span>
+                    </div>
+                    <p className="card-text">{product.productDescription}</p>
+                    <Link
+                      to={`/product/${product.productNumber}`}
+                      className="btn btn-primary btn-sm"
+                    >
+                      <MdInfoOutline fontSize={"24"} />
+                      See full details
+                    </Link>
+                  </div>
                 </div>
               </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="row text-center" style={{ height: "500px" }}>
+          <div className="col-12 mx-auto  my-auto " key={`${newUniqueId}`}>
+            <div className="h5 text-secondary ">
+              Currently No products available{" "}
+              {selectedCategory
+                ? `under the selected category:  ${selectedCategory}`
+                : " "}
             </div>
-          );
-        })}
-      </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

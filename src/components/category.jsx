@@ -1,66 +1,75 @@
-import React, { useState, useId } from "react";
-import ProductsList from "./productsList";
-// import
+import React, { useId } from "react";
+import {
+  MdCategory,
+  MdOutlineKitchen,
+  MdOutlineElectricalServices,
+  MdOutlineChair,
+} from "react-icons/md";
+
+import { GiClothes } from "react-icons/gi";
+import { PiDotsThreeOutlineFill } from "react-icons/pi";
 
 const categoriesData = [
   {
     name: "All categories",
-    icon: "icon 1",
+    icon: <MdCategory />,
   },
   {
     name: "Home Appliances",
-    icon: "icon 2",
+    icon: <MdOutlineKitchen />,
   },
   {
     name: "Electrics / Electronics",
-    icon: "icon 3",
+    icon: <MdOutlineElectricalServices />,
   },
   {
     name: "Furniture",
-    icon: "icon 4",
+    icon: <MdOutlineChair />,
   },
   {
     name: "Clothing",
-    icon: "icon 5",
+    icon: <GiClothes />,
   },
   {
     name: "Others",
-    icon: "icon 6",
+    icon: <PiDotsThreeOutlineFill />,
+  },
+  {
+    name: "Others1",
+    icon: <PiDotsThreeOutlineFill />,
   },
 ];
 
-function Categories() {
+function Categories({ selectedCategory, setSelectedCategory }) {
   const newUniqueId = useId();
-  const [currentCategory, setCurrentCategory] = useState("");
+
+  function formatClass(category) {
+    if (selectedCategory === "" && category.name === "All categories")
+      return "list-group-item list-group-item-action bg-primary";
+    return category.name === selectedCategory
+      ? "list-group-item list-group-item-action active"
+      : "list-group-item list-group-item-action";
+  }
 
   return (
     <>
-      {/* <div className="text-center">Categories</div> */}
-
       <div className="list-group" id="list-tab" role="tablist">
-        <h4 className="text-center text-warning pb-3 border-bottom">
-          Available Categories
-        </h4>
+        <h4 className="text-center pb-3 border-bottom">Available Categories</h4>
         {categoriesData.map((category, index) => (
-          //   <li key={`${newUniqueId}-${index}`}>{category.name}</li>
           <a
-            // className="list-group-item list-group-item-action active"
-            className={
-              currentCategory === toString(category.name)
-                ? "list-group-item list-group-item-action active"
-                : "list-group-item list-group-item-action"
-            }
+            className={formatClass(category)}
             onClick={() => {
-              setCurrentCategory(category.name);
+              console.log(category.name, "  selected");
+              setSelectedCategory(category.name);
             }}
-            id="list-home-list"
+            // id="list-home-list"
             data-bs-toggle="list"
             href="#list-home"
-            role="tab"
-            aria-controls="list-home"
+            // role="tab"
+            // aria-controls="list-home"
             key={`${newUniqueId}-${index}`}
           >
-            {category.name}
+            {category.icon} {category.name}
           </a>
         ))}
       </div>

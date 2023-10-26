@@ -1,9 +1,8 @@
 import React, { useState, useId } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee, faBars, faTwitter } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { SidebarData } from "./sidebar";
-import { MdArrowBack } from "react-icons/md";
 
 function NavBar() {
   const newUniqueId = useId();
@@ -13,7 +12,7 @@ function NavBar() {
   console.log("location ", location, location.pathname);
 
   return (
-    <div className="px-3 py-3 sticky-top">
+    <div className="px-3 py-3 bg-light sticky-top">
       <button
         className="btn btn-dark"
         type="button"
@@ -23,7 +22,7 @@ function NavBar() {
       >
         <FontAwesomeIcon icon={faBars} />
       </button>{" "}
-      <span className="text-light">HGL Shop</span>
+      <span className="text-dark font-weight-bold ">HGL Shop</span>
       <div
         className="offcanvas offcanvas-start"
         data-bs-scroll="true"

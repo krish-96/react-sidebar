@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Categories from "./category";
 import ProductsList from "./productsList";
 
 export default function Products() {
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   return (
     <>
-      <h1 className="text-center">Products</h1>
+      <h1 className="text-center">
+        Products {selectedCategory ? `(${selectedCategory})` : ""}
+      </h1>
       <div className="row container">
-        <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-          <Categories />
+        <div className="col-xs-6 col-sm-6  col-md-4  col-lg-3">
+          <Categories
+            selectCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+          />
         </div>
-        <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-          <ProductsList />
+        <div className="col-xs-6  col-sm-6  col-md-8 col-lg-9">
+          <ProductsList selectedCategory={selectedCategory} />
         </div>
       </div>
       <nav aria-label="Page navigation example">

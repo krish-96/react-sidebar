@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { getProduct } from "./productsList";
 
-import { MdWarningAmber } from "react-icons/md";
+import { MdWarningAmber, MdInfoOutline } from "react-icons/md";
 
 export default function Product() {
   const location = useLocation();
@@ -16,20 +16,22 @@ export default function Product() {
     return (
       <>
         <h1 className="h1 text-center">
-          About the product : {productDetails.productName}
+          About the product : <MdInfoOutline /> {productDetails.productName}
         </h1>
         <hr />
         <div className="row">
           <div className="col-6 text-end px-5 py-2">
-            <img
-              src={productDetails.productImage}
-              alt=""
-              style={{
-                width: "50%",
-                boxShadow: "rgb(105 105 105) 0px 0px 20px 2px",
-                borderRadius: "5px",
-              }}
-            />
+            <Suspense fallback={<div>Loading...</div>}>
+              <img
+                src={productDetails.productImage}
+                alt=""
+                style={{
+                  // width: "50%",
+                  boxShadow: "rgb(105 105 105) 0px 0px 20px 2px",
+                  borderRadius: "5px",
+                }}
+              />
+            </Suspense>
           </div>
           <div className="col-6 text-center justify-content-center my-auto align-items-center">
             <div className="text-start h5">
