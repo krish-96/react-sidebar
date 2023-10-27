@@ -1,26 +1,28 @@
 import React from "react";
 
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./App.css";
-import NavBar from "./components/navbar";
-import Account from "./components/account";
-import DashBoard from "./components/dashboard";
-import Product from "./components/product";
-import Products from "./components/products";
-import Categories from "./components/category";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee, faBars, faTwitter } from "@fortawesome/free-solid-svg-icons";
+import AccordionsList from "./components/accordionList";
 
 function App() {
   const currentPath = useLocation();
   console.log(currentPath.pathname === "/products");
+  console.log("product", sessionStorage.getItem("products"));
 
   return (
     <>
-      <NavBar />
-      {/* <h1 className="text-center">Home</h1> */}
-      <Outlet />
+      <h1 className="text-center display-6">Welcome to HGL Shop!</h1>
+      <p className="lead text-center mt-4">
+        Welcome to HGL Shop – Your One-Stop Shop for Everything You Need!
+      </p>
+      <div className="container">
+        <h5 className="px-5 mt-5 mb-3">
+          Currently we are trying to get you the following features:
+        </h5>
+        <div className="">
+          <AccordionsList />
+        </div>
+      </div>
     </>
   );
 }

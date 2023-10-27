@@ -1,7 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Account() {
+const formatFeatureCard = ({ heading, content, linkAddress, labelName }) => {
+  return (
+    <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      <div className="card">
+        <div className="card-body">
+          <h5 className="card-title">{heading}</h5>
+          <p className="card-text">{content}</p>
+          <div className="text-center">
+            <Link to={linkAddress} className="btn btn-primary btn-sm">
+              {labelName}
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default function AccountFeatures() {
   return (
     <>
       <div className="container row">
@@ -12,6 +30,12 @@ export default function Account() {
           you can manage your account settings, view your order history, and
           update your personal information.
         </p>
+        {formatFeatureCard({
+          heading: "heheh",
+          content: "hello",
+          linkAddress: "/",
+          labelName: "Hello",
+        })}
         <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
           <div className="card">
             <div className="card-body">

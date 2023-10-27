@@ -22,7 +22,9 @@ function NavBar() {
       >
         <FontAwesomeIcon icon={faBars} />
       </button>{" "}
-      <span className="text-dark font-weight-bold ">HGL Shop</span>
+      <Link to="/" className="navbar-brand text-dark font-weight-bold">
+        HGL Shop
+      </Link>
       <div
         className="offcanvas offcanvas-start"
         data-bs-scroll="true"
