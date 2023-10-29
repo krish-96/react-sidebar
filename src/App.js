@@ -16,8 +16,8 @@ function App() {
         Welcome to HGL Shop – Your One-Stop Shop for Everything You Need!
       </p>
       <div className="container">
-        <h5 className="px-5 mt-5 mb-3">
-          Currently we are trying to get you the following features:
+        <h5 className="mt-5 mb-3">
+          Currently we are working on the following features:
         </h5>
         <div className="">
           <AccordionsList />

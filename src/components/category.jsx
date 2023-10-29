@@ -40,9 +40,14 @@ const categoriesData = [
   },
 ];
 
-function Categories({ selectedCategory, setSelectedCategory }) {
+function Categories({
+  selectedCategory,
+  setSelectedCategory,
+  searchProduct,
+  setSearchProduct,
+  totalProducts,
+}) {
   const newUniqueId = useId();
-
   function formatClass(category) {
     if (selectedCategory === "" && category.name === "All categories")
       return "list-group-item list-group-item-action bg-primary";
@@ -54,12 +59,26 @@ function Categories({ selectedCategory, setSelectedCategory }) {
   return (
     <>
       <div className="list-group" id="list-tab" role="tablist">
-        <h4 className="text-center pb-3 border-bottom">Available Categories</h4>
+        <div className="h5">Seach by Product</div>
+        <input
+          type="text"
+          onChange={(e) => {
+            setSelectedCategory("");
+            setSearchProduct(e.currentTarget.value);
+          }}
+          value={searchProduct}
+          className="form-control my-2 px-2 text-success"
+        />
+        {searchProduct && totalProducts > 0 && (
+          <div className="my-2">Total Products : {totalProducts}</div>
+        )}
+        <div className="h5">Seach by Category</div>
         {categoriesData.map((category, index) => (
           <a
             className={formatClass(category)}
             onClick={() => {
               console.log(category.name, "  selected");
+              setSearchProduct("");
               setSelectedCategory(category.name);
             }}
             // id="list-home-list"

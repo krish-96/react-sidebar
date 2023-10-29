@@ -12,7 +12,7 @@ export default function Account() {
           you can manage your account settings, view your order history, and
           update your personal information.
         </p>
-        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 py-2">
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">Personal Information</h5>
@@ -28,7 +28,7 @@ export default function Account() {
             </div>
           </div>
         </div>
-        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 py-2">
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">Change Password</h5>
@@ -45,7 +45,7 @@ export default function Account() {
             </div>
           </div>
         </div>
-        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 py-2">
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">Order History</h5>
@@ -62,7 +62,7 @@ export default function Account() {
             </div>
           </div>
         </div>
-        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 py-2">
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">Address Book</h5>
@@ -79,7 +79,7 @@ export default function Account() {
             </div>
           </div>
         </div>
-        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 py-2">
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">Notifications and Subscriptions</h5>
@@ -96,7 +96,7 @@ export default function Account() {
             </div>
           </div>
         </div>
-        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 py-2">
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">Log Out</h5>

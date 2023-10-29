@@ -15,8 +15,13 @@ export default function Product() {
   if (productDetails) {
     return (
       <>
-        <h1 className="h1 text-center">
-          About the product : <MdInfoOutline /> {productDetails.productName}
+        <h1
+          className="h1 text-center "
+          data-toggle="tooltip"
+          data-placement="top"
+          title={`About the product ${productDetails.productName}`}
+        >
+          <MdInfoOutline /> {productDetails.productName}
         </h1>
         <hr />
         <div className="row">
@@ -39,7 +44,7 @@ export default function Product() {
             </div>
             <div className="text-start">
               <span className="h5">Product details:</span> <br />
-              <p>{productDetails.productDescription}</p>
+              <p className=" px-2">{productDetails.productDescription}</p>
             </div>
           </div>
         </div>
