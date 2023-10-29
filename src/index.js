@@ -11,6 +11,7 @@ import Product from "./components/product";
 import Products from "./components/products";
 import NotFound from "./components/notfound";
 import EditPersonalInformation from "./components/editPersonalInfo";
+import MyShop from "./components/myshop";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,6 +23,7 @@ root.render(
           <Route path="/account" element={<Account />} />
           <Route path="/personal-info" element={<EditPersonalInformation />} />
           <Route path="/dashboard" element={<DashBoard />} />
+          <Route path="/my-shop" element={<MyShop />} />
           {/* <Route path="/product" element={<Products />}>
             <Route index element={<Products />} /> */}
           <Route path="/product/:productNumber" element={<Product />} />

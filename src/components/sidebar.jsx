@@ -7,8 +7,8 @@ import {
   MdAccountCircle,
   MdDashboard,
   MdViewList,
+  MdShoppingBasket,
 } from "react-icons/md";
-
 export const SidebarData = [
   {
     title: "Home",
@@ -30,9 +30,9 @@ export const SidebarData = [
     path: "/products",
     icon: <MdViewList />,
   },
-  // {
-  //   title: "Product",
-  //   path: "/product",
-  //   icon: <MdDashboard />,
-  // },
+  {
+    title: "My Shop",
+    path: "/my-shop",
+    icon: <MdShoppingBasket />,
+  },
 ];
