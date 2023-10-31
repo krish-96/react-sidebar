@@ -8,7 +8,6 @@ function App() {
   const currentPath = useLocation();
   console.log(currentPath.pathname === "/products");
   console.log("product", sessionStorage.getItem("products"));
-
   return (
     <>
       <h1 className="text-center display-6">Welcome to HGL Shop!</h1>

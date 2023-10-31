@@ -7,9 +7,17 @@ import { SidebarData } from "./sidebar";
 function NavBar() {
   const newUniqueId = useId();
   const location = useLocation();
+  const token = localStorage.getItem("token");
   const [activeNavLink, setActiveNavLink] = useState("/");
   console.log("setActiveNavLink ", activeNavLink);
   console.log("location ", location, location.pathname);
+  const fileteredSideBar = SidebarData.filter((sidebar) => {
+    if ((sidebar.path === "/signin" || sidebar.path === "/signup") && token)
+      return;
+    else if (sidebar.path === "/signout" && !token) return;
+
+    return sidebar;
+  });
 
   return (
     <div className="px-3 py-3 bg-light sticky-top">
@@ -45,7 +53,7 @@ function NavBar() {
         </div>
         <div className="offcanvas-body">
           <ul className="nav flex-column">
-            {SidebarData.map((sideBarOption, index) => (
+            {fileteredSideBar.map((sideBarOption, index) => (
               <li
                 className={
                   location.pathname === sideBarOption.path

@@ -69,7 +69,10 @@ function Categories({
           value={searchProduct}
           className="form-control my-2 px-2 text-success"
         />
-        {searchProduct && totalProducts > 0 && (
+        {/* {(searchProduct || selectedCategory) && totalProducts > 0 && (
+          <div className="my-2">Total Products : {totalProducts}</div>
+        )} */}
+        {totalProducts > 0 && (
           <div className="my-2">Total Products : {totalProducts}</div>
         )}
         <div className="h5">Seach by Category</div>

@@ -11,8 +11,8 @@ export default function EditPersonalInformation() {
         </p>
         <div>
           <form>
-            <formFields.InputField name={'firstName'}/>
-            <label for="firstName">First Name:</label>
+            <formFields.InputField name={"firstName"} />
+            <label htmlFor="firstName">First Name:</label>
             <input
               type="text"
               id="firstName"
@@ -21,7 +21,7 @@ export default function EditPersonalInformation() {
               required
             />
 
-            <label for="lastName">Last Name:</label>
+            <label htmlFor="lastName">Last Name:</label>
             <input
               type="text"
               id="lastName"
@@ -30,7 +30,7 @@ export default function EditPersonalInformation() {
               required
             />
 
-            <label for="email">Email Address:</label>
+            <label htmlFor="email">Email Address:</label>
             <input
               type="email"
               id="email"
@@ -39,7 +39,7 @@ export default function EditPersonalInformation() {
               required
             />
 
-            <label for="phone">Phone Number:</label>
+            <label htmlFor="phone">Phone Number:</label>
             <input
               type="tel"
               id="phone"

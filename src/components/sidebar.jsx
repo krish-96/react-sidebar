@@ -8,6 +8,8 @@ import {
   MdDashboard,
   MdViewList,
   MdShoppingBasket,
+  MdLogin,
+  MdLogout,
 } from "react-icons/md";
 export const SidebarData = [
   {
@@ -34,5 +36,20 @@ export const SidebarData = [
     title: "My Shop",
     path: "/my-shop",
     icon: <MdShoppingBasket />,
+  },
+  {
+    title: "Sign Up",
+    path: "/signup",
+    icon: <MdLogout />,
+  },
+  {
+    title: "Sign In",
+    path: "/signin",
+    icon: <MdLogin />,
+  },
+  {
+    title: "Sign Out",
+    path: "/signout",
+    icon: <MdLogout />,
   },
 ];

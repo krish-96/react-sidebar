@@ -13,6 +13,13 @@ import NotFound from "./components/notfound";
 import EditPersonalInformation from "./components/editPersonalInfo";
 import MyShop from "./components/myshop";
 
+import SignUp from "./components/signUp";
+import SignIn from "./components/signIn";
+import SignOut from "./components/signOut";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -24,16 +31,16 @@ root.render(
           <Route path="/personal-info" element={<EditPersonalInformation />} />
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/my-shop" element={<MyShop />} />
-          {/* <Route path="/product" element={<Products />}>
-            <Route index element={<Products />} /> */}
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signout" element={<SignOut />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/product/:productNumber" element={<Product />} />
-          {/* </Route> */}
           <Route path="/products" element={<Products />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-      {/* <App /> */}
     </BrowserRouter>
+    <ToastContainer position="bottom-right" />
   </React.StrictMode>
 );
 
