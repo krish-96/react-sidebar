@@ -5,11 +5,12 @@ function InputField({
   id,
   type,
   label,
+  value = null,
   onChange = { onChange },
   required = false,
 }) {
   return (
-    <div className="form-field">
+    <div className="form-group">
       <label htmlFor={name} className="form-label">
         {label}
       </label>
@@ -19,6 +20,7 @@ function InputField({
         id={id}
         name={name}
         required={required}
+        value={value}
         onChange={onChange}
         className="form-control"
       />
@@ -28,7 +30,7 @@ function InputField({
 
 function Button({ name, type, btnClass = "" }) {
   return (
-    <div className="form-field">
+    <div className="form-group">
       <button type={type} className={btnClass}>
         {name}
       </button>

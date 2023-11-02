@@ -17,6 +17,11 @@ axios.interceptors.response.use(
   (response) => {
     if (response.status === 200) {
       return response.data;
+    } else if (response.status === 201) {
+      // toast.success("Created successfully");
+      return response.data;
+    } else if (response.status >= 200 || response.status < 300) {
+      return true;
     } else if (response.status >= 400 || response.status < 500) {
       alert("something went wrong!");
     } else {
@@ -66,5 +71,5 @@ export default {
   get: axios.get,
   post: axios.post,
   delete: axios.delete,
-  update: axios.update,
+  update: axios.put,
 };
