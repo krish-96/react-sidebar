@@ -38,4 +38,43 @@ function Button({ name, type, btnClass = "" }) {
   );
 }
 
-export default { InputField, Button };
+function SelectField({
+  name,
+  label,
+  onChange,
+  selectOptions = [],
+  defaultOption = "",
+}) {
+  const formattedOptions = [{ id: 0, name: "Choose..." }, ...selectOptions];
+
+  return (
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">
+          {label}
+        </label>
+      </div>
+      <select
+        class="custom-select"
+        id="inputGroupSelect01"
+        // onChange={(e) => {
+        //   console.log(e.currentTarget.value);
+        //   selectedOption = e.currentTarget.value;
+        // }}
+        // value={selectedOption}
+        onChange={onChange}
+      >
+        {formattedOptions.map((selectOption) => (
+          <option
+            value={selectOption.id}
+            selected={selectOption.id == defaultOption ? "true" : ""}
+          >
+            {selectOption.name}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+export default { InputField, Button, SelectField };

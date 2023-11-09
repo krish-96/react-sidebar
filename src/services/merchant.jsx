@@ -4,20 +4,19 @@ import { toast } from "react-toastify";
 
 async function getMerchantCategories() {
   const res = await http.get(api.category);
-  console.log("res ::: ", res);
-
+  console.log("get Mer Cats ::: ", res);
   return res;
 }
 
 async function getMerchantSubCategories() {
   const res = await http.get(api.subcategory);
-  console.log("res ::: ", res);
+  console.log("get Mer subCats ::: ", res);
   return res;
 }
 
 async function getMerchantProducts() {
   const res = await http.get(api.product);
-  console.log("res ::: ", res);
+  console.log("get Mer Prods ::: ", res);
   return res;
 }
 
@@ -29,21 +28,21 @@ async function getCategory(id) {
 
 async function createCategory(categoryData) {
   const res = await http.post(api.category, categoryData);
-  console.log("createCategory => res :: ", res);
+  console.log("create categoty => res :: ", res);
   if (res) toast.success("Category created successfully");
   return res;
 }
 
 async function updateCategory(categoryData, id) {
   const res = await http.update(`${api.category}${id}/`, categoryData);
-  console.log("createCategory => res :: ", res);
+  console.log("update categoty => res :: ", res);
   if (res) toast.success("Category updated successfully");
   return res;
 }
 
 async function deleteCategory(id) {
   const res = await http.delete(`${api.category}${id}/`);
-  console.log("createCategory => res :: ", res);
+  console.log("delete categoty => res :: ", res);
   if (res) toast.success("Category deleted successfully");
   return res;
 }
@@ -54,20 +53,68 @@ async function getSubCategory(id) {
   return res;
 }
 
+async function createSubCategory(categoryData) {
+  const res = await http.post(api.subcategory, categoryData);
+  console.log("create sub category => res :: ", res);
+  if (res) toast.success("Sub Category created successfully");
+  return res;
+}
+
+async function updateSubCategory(categoryData, id) {
+  const res = await http.update(`${api.subcategory}${id}/`, categoryData);
+  console.log("update sub cat => res :: ", res);
+  if (res) toast.success("Sub Category updated successfully");
+  return res;
+}
+
+async function deleteSubCategory(id) {
+  const res = await http.delete(`${api.subcategory}${id}/`);
+  console.log("delete subcat  => res :: ", res);
+  if (res) toast.success("Sub Category deleted successfully");
+  return res;
+}
+
 async function getProduct(id) {
   const res = await http.get(`${api.product}${id}`);
   console.log("getProduct => res :: ", res);
   return res;
 }
 
+async function createProduct(categoryData) {
+  const res = await http.post(api.product, categoryData);
+  console.log("create Product => res :: ", res);
+  if (res) toast.success("Product created successfully");
+  return res;
+}
+
+async function updateProduct(categoryData, id) {
+  const res = await http.update(`${api.product}${id}/`, categoryData);
+  console.log("update Product => res :: ", res);
+  if (res) toast.success("Product updated successfully");
+  return res;
+}
+
+async function deleteProduct(id) {
+  const res = await http.delete(`${api.product}${id}/`);
+  console.log("delete Product => res :: ", res);
+  if (res) toast.success("Product deleted successfully");
+  return res;
+}
+
 export default {
   getMerchantCategories,
+  getMerchantSubCategories,
+  getMerchantProducts,
   getCategory,
   createCategory,
   updateCategory,
   deleteCategory,
-  getMerchantSubCategories,
-  getMerchantProducts,
-  getProduct,
   getSubCategory,
+  createSubCategory,
+  updateSubCategory,
+  deleteSubCategory,
+  getProduct,
+  createProduct,
+  updateProduct,
+  deleteProduct,
 };

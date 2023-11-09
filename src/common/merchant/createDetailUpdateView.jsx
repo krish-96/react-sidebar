@@ -1,7 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import { ProdCatSubCatContext } from "../../components/myshop";
 import merchantServices from "../../services/merchant";
-import CategoryComponent from "./catcrud";
+import CategoryCRUDComponent from "./catcrud";
+import SubCategoryCRUDComponent from "./subcatcrud";
+import ProductCRUDComponent from "./prodcrud";
+
 import { toast } from "react-toastify";
 // function CategoryComponent(){
 
@@ -155,11 +158,11 @@ export default function ViewOrUpdate({ isProdCatSubCat }) {
         }}
       >
         <div style={{ position: "relative", padding: "20px" }}>
-          <h5 className="display-5 text-center">{formatHeading()}</h5>
+          <h5 className="display-5 text-center mt-5">{formatHeading()}</h5>
           <div>
-            <h5 className="text-center">Data</h5>
+            {/* <h5 className="text-center">Data</h5> */}
             {actionFor === "category" ? (
-              <CategoryComponent
+              <CategoryCRUDComponent
                 formatHeading={formatHeading}
                 formatButtons={formatButtons}
                 handlePopUp={handlePopUp}
@@ -168,10 +171,28 @@ export default function ViewOrUpdate({ isProdCatSubCat }) {
             ) : (
               ""
             )}
-            {actionFor === "sub category" ? "Sub Category" : ""}
-            {actionFor === "product" ? "Product" : ""}
+            {actionFor === "sub category" ? (
+              <SubCategoryCRUDComponent
+                formatHeading={formatHeading}
+                formatButtons={formatButtons}
+                handlePopUp={handlePopUp}
+                details={details}
+              />
+            ) : (
+              ""
+            )}
+            {actionFor === "product" ? (
+              <ProductCRUDComponent
+                formatHeading={formatHeading}
+                formatButtons={formatButtons}
+                handlePopUp={handlePopUp}
+                details={details}
+              />
+            ) : (
+              ""
+            )}
           </div>
-          <p className="text-center mt-2">{formatButtons()}</p>
+          {/* <p className="text-center mt-2">{formatButtons()}</p> */}
         </div>
       </div>
     </>

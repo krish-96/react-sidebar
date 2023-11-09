@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <h1 className="text-center display-6">Welcome to HGL Shop!</h1>
-      <p className="lead text-center mt-4">
+      <p className="lead text-center mt-4 fst-italic">
         Welcome to HGL Shop – Your One-Stop Shop for Everything You Need!
       </p>
       <div className="container">

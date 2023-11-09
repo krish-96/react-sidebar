@@ -28,7 +28,8 @@ export const SidebarData = [
     icon: <MdDashboard />,
   },
   {
-    title: "Products",
+    // title: "Products",
+    title: "Let's do Shopping...",
     path: "/products",
     icon: <MdViewList />,
   },

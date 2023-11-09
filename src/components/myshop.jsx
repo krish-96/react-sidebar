@@ -45,6 +45,17 @@ export default function MyShop() {
     }
   }, [token, action]);
 
+  function getCategoryName(catName) {
+    if (merchantData.categories && merchantData.categories.length >= 1) {
+      let catExists = merchantData.categories.filter(
+        (cat) => cat.name === catName
+      );
+      if (catExists) return catExists;
+      else return;
+    }
+    return;
+  }
+
   console.log("process.env.NODE_ENV", process.env.NODE_ENV);
   return (
     <>
@@ -58,6 +69,8 @@ export default function MyShop() {
           setActionFor,
           id,
           setId,
+          categories: merchantData.categories,
+          getCategoryName,
         }}
       >
         <div className="row mx-5">
@@ -89,6 +102,7 @@ export default function MyShop() {
                 className="btn btn-primary btn-sm"
                 onClick={() => {
                   setActionFor("sub category");
+                  setAction("create");
                   setIsCreateDetailUpdateView(true);
                   console.log(action, isCreateDetailUpdateView);
                 }}

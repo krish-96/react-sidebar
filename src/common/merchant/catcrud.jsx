@@ -5,7 +5,7 @@ import formFields from "./../../common/formFields";
 import merchantServices from "../../services/merchant";
 import { ProdCatSubCatContext } from "./../../components/myshop";
 
-function CategoryComponent({ formatHeading, formatButtons, details }) {
+function CategoryCRUDComponent({ formatHeading, formatButtons, details }) {
   const navigate = useNavigate();
   const {
     isCreateDetailUpdateView,
@@ -124,4 +124,4 @@ function CategoryComponent({ formatHeading, formatButtons, details }) {
   );
 }
 
-export default CategoryComponent;
+export default CategoryCRUDComponent;
