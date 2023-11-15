@@ -30,7 +30,7 @@ export const SidebarData = [
   {
     // title: "Products",
     title: "Let's do Shopping...",
-    path: "/products",
+    path: "/shop",
     icon: <MdViewList />,
   },
   {

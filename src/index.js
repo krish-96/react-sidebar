@@ -35,7 +35,7 @@ root.render(
           <Route path="/signout" element={<SignOut />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/product/:productNumber" element={<Product />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/shop" element={<Products />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
@@ -45,6 +45,15 @@ root.render(
 );
 
 reportWebVitals();
+
+{
+  /* <p className="alert alert-warning text-center">
+<span className="text-danger">
+  <strong>Note : </strong>
+</span>
+Still working on it! BackEnd API implementation is not completed.
+</p> */
+}
 
 // import * as React from "react";
 // import { createRoot } from "react-dom/client";

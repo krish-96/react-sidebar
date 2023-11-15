@@ -6,8 +6,16 @@ import {
   MdOutlineChair,
 } from "react-icons/md";
 
+import user from "./../services/user";
+
 import { GiClothes } from "react-icons/gi";
 import { PiDotsThreeOutlineFill } from "react-icons/pi";
+
+async function formatCategories() {
+  const categories = await user.getLiveCategories();
+  console.log("Live categories : ", categories);
+  return categories;
+}
 
 const categoriesData = [
   {

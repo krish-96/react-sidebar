@@ -6,7 +6,7 @@ import AccordionsList from "./components/accordionList";
 
 function App() {
   const currentPath = useLocation();
-  console.log(currentPath.pathname === "/products");
+  console.log(currentPath.pathname === "/shop");
   console.log("product", sessionStorage.getItem("products"));
   return (
     <>
@@ -14,7 +14,7 @@ function App() {
       <p className="lead text-center mt-4 fst-italic">
         Welcome to HGL Shop – Your One-Stop Shop for Everything You Need!
       </p>
-      <div className="container">
+      <div className="container mb-5">
         <h5 className="mt-5 mb-3">
           Currently we are working on the following features:
         </h5>

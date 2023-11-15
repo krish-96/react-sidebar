@@ -6,7 +6,7 @@ function InputField({
   type,
   label,
   value = null,
-  onChange = { onChange },
+  onChange,
   required = false,
 }) {
   return (
@@ -67,7 +67,7 @@ function SelectField({
         {formattedOptions.map((selectOption) => (
           <option
             value={selectOption.id}
-            selected={selectOption.id == defaultOption ? "true" : ""}
+            selected={selectOption.id === defaultOption ? "true" : ""}
           >
             {selectOption.name}
           </option>

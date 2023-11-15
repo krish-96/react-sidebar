@@ -10,8 +10,9 @@ export default function SignIn() {
   useEffect(() => {
     if (token && token !== "") {
       console.log("About to remove the token!");
-      localStorage.removeItem("token");
-      console.log("Token Removed!");
+      // localStorage.removeItem("token");
+      // console.log("Token Removed!");
+      auth.signOut();
       navigate("/signin");
     }
     navigate("/signin");

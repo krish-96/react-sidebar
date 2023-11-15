@@ -80,6 +80,18 @@ async function getProduct(id) {
   return res;
 }
 
+async function getLiveProduct(id) {
+  let url = `${api.product}${id}`;
+  let user_type = localStorage.getItem(user_type, "");
+  let merchant_id = localStorage.getItem(merchant_id, "");
+  if (user_type === "merchant" && merchant_id) {
+    let url = `${api.product}${id}${merchant_id}`;
+  }
+  const res = await http.get(url);
+  console.log("getProduct => res :: ", res);
+  return res;
+}
+
 async function createProduct(categoryData) {
   const res = await http.post(api.product, categoryData);
   console.log("create Product => res :: ", res);
