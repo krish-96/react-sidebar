@@ -8,12 +8,19 @@ async function getLiveProducts() {
 }
 
 async function getLiveCategories() {
-  const res = await http.get(`${api.category}`);
-  console.log("getLiveProducts => res :: ", res);
+  const res = await http.get(`${api.liveCategories}`);
+  console.log("getLiveCategories => res :: ", res);
+  return res;
+}
+
+async function getLiveSubCategories() {
+  const res = await http.get(`${api.liveSubCategories}`);
+  console.log("getLiveSubCategories => res :: ", res);
   return res;
 }
 
 export default {
   getLiveProducts,
   getLiveCategories,
+  getLiveSubCategories,
 };

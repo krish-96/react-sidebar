@@ -10,6 +10,9 @@ const api = {
   product: BASE_URL + "api/product/product/",
   productDetails: BASE_URL + "api/product/product/{:id}/",
   liveProducts: BASE_URL + "api/product/product/get_live_products/",
+  liveCategories: BASE_URL + "api/product/category/get_live_categories/",
+  liveSubCategories:
+    BASE_URL + "api/product/subcategory/get_live_sub_categories/",
 };
 
 export default api;

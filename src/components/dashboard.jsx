@@ -1,7 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function DashBoard() {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  useEffect(() => {
+    navigate("/signin", { replace: true });
+  }, []);
+  if (!token) return;
   return (
     <>
       <h1 className="text-center">DashBoard</h1>

@@ -34,7 +34,7 @@ root.render(
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/product/:productNumber" element={<Product />} />
+          <Route path="/product/:productId" element={<Product />} />
           <Route path="/shop" element={<Products />} />
           <Route path="*" element={<NotFound />} />
         </Route>

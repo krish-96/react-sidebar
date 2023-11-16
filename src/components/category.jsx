@@ -1,4 +1,4 @@
-import React, { useId } from "react";
+import React, { useId, useState } from "react";
 import {
   MdCategory,
   MdOutlineKitchen,
@@ -11,42 +11,48 @@ import user from "./../services/user";
 import { GiClothes } from "react-icons/gi";
 import { PiDotsThreeOutlineFill } from "react-icons/pi";
 
-async function formatCategories() {
-  const categories = await user.getLiveCategories();
-  console.log("Live categories : ", categories);
-  return categories;
-}
+// async function formatCategories() {
+//   const categories = await user.getLiveCategories();
+//   console.log("Live categories : ", categories);
+//   return categories;
+// }
 
-const categoriesData = [
-  {
-    name: "All categories",
-    icon: <MdCategory />,
-  },
-  {
-    name: "Home Appliances",
-    icon: <MdOutlineKitchen />,
-  },
-  {
-    name: "Electrics / Electronics",
-    icon: <MdOutlineElectricalServices />,
-  },
-  {
-    name: "Furniture",
-    icon: <MdOutlineChair />,
-  },
-  {
-    name: "Clothing",
-    icon: <GiClothes />,
-  },
-  {
-    name: "Others",
-    icon: <PiDotsThreeOutlineFill />,
-  },
-  {
-    name: "Others1",
-    icon: <PiDotsThreeOutlineFill />,
-  },
-];
+// const categoriesData = async () => {
+//   let cats = await user.getLiveCategories();
+//   console.log("Live cats : ", cats);
+//   return cats;
+// };
+
+// const categoriesData = [
+//   {
+//     name: "All categories",
+//     icon: <MdCategory />,
+//   },
+//   {
+//     name: "Home Appliances",
+//     icon: <MdOutlineKitchen />,
+//   },
+//   {
+//     name: "Electrics / Electronics",
+//     icon: <MdOutlineElectricalServices />,
+//   },
+//   {
+//     name: "Furniture",
+//     icon: <MdOutlineChair />,
+//   },
+//   {
+//     name: "Clothing",
+//     icon: <GiClothes />,
+//   },
+//   {
+//     name: "Others",
+//     icon: <PiDotsThreeOutlineFill />,
+//   },
+//   {
+//     name: "Others1",
+//     icon: <PiDotsThreeOutlineFill />,
+//   },
+// ];
 
 function Categories({
   selectedCategory,
@@ -56,6 +62,15 @@ function Categories({
   totalProducts,
 }) {
   const newUniqueId = useId();
+
+  const [categories, setCategories] = useState([]);
+
+  useState(async () => {
+    let cats = await user.getLiveCategories();
+    console.log("Live cats : ", cats);
+    setCategories(cats);
+  }, [categories]);
+
   function formatClass(category) {
     if (selectedCategory === "" && category.name === "All categories")
       return "list-group-item list-group-item-action bg-primary";
@@ -63,6 +78,8 @@ function Categories({
       ? "list-group-item list-group-item-action active"
       : "list-group-item list-group-item-action";
   }
+  const categoriesData = categories;
+  console.log("categoriesData=====> ", categoriesData);
 
   return (
     <>

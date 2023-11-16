@@ -23,22 +23,22 @@ function NavBar() {
     else if (sidebar.path === "/signup") return;
     else if (sidebar.path === "/signout") return;
     else if (sidebar.path === "/signout") return;
-    // else if (
-    //   sidebar.path === "/my-shop" &&
-    //   localStorage.getItem("user_type") == "user"
-    // )
-    //   return;
-    // else if (
-    //   sidebar.path === "/products" &&
-    //   localStorage.getItem("user_type") == "merchant"
-    // )
-    //   return;
+    else if (
+      sidebar.path === "/my-shop" &&
+      localStorage.getItem("user_type") == "user"
+    )
+      return;
+    else if (
+      sidebar.path === "/shop" &&
+      localStorage.getItem("user_type") == "merchant"
+    )
+      return;
     return sidebar;
   });
 
   return (
-    <nav class="navbar bg-light">
-      <div class="container-fluid">
+    <nav className="navbar bg-light">
+      <div className="container-fluid">
         <div>
           <button
             className="btn btn-dark"
@@ -112,7 +112,7 @@ function NavBar() {
         </div>
         {username &&
         (username !== "" || username !== null || username !== undefined) ? (
-          <div class="d-flex">
+          <div className="d-flex">
             <span className="mx-5 fw-bold">
               <span className="mx-2">
                 <FontAwesomeIcon icon={faUser} />
